@@ -1,8 +1,11 @@
 const axios = require("axios");
+require('dotenv').config();
 
 exports.handler = async function(event, context) {
+  const key = process.env.NEWS_API_KEY;
+  console.log(key)
   try {
-    const response = await axios.get("https://newsapi.org/v2/top-headlines?country=us&apiKey=6db2fbb5bdc04030883ba36947c8b558");
+    const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${key}`);
     return {
       statusCode: 200,
       body: JSON.stringify(response.data),
