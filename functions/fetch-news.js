@@ -7,6 +7,11 @@ exports.handler = async function(event, context) {
     const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${key}`);
     return {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Allow any origin
+        "Access-Control-Allow-Methods": "GET, POST", // Allow GET and POST methods
+        "Content-Type": "application/json"
+    },
       body: JSON.stringify(response.data),
     };
   } catch (error) {
