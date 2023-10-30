@@ -1,5 +1,6 @@
 const axios = require("axios");
-require('dotenv').config();
+import dotenv from 'dotenv'
+dotenv.config();
 
 exports.handler = async function(event, context) {
   const key = process.env.NEWS_API_KEY;
